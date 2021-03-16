@@ -121,7 +121,7 @@ void SetupIPFSProtocolHandler(const std::string& protocol) {
       ->StartCheckIsDefault(base::BindOnce(isDefaultCallback, protocol));
 }
 
-base::string16 GetImportNotificationTitle(ipfs::ImportState state) {
+std::u16string GetImportNotificationTitle(ipfs::ImportState state) {
   switch (state) {
     case ipfs::IPFS_IMPORT_SUCCESS:
       return l10n_util::GetStringUTF16(IDS_IPFS_IMPORT_NOTIFICATION_TITLE);
@@ -137,10 +137,10 @@ base::string16 GetImportNotificationTitle(ipfs::ImportState state) {
       NOTREACHED();
       break;
   }
-  return base::string16();
+  return std::u16string();
 }
 
-base::string16 GetImportNotificationBody(ipfs::ImportState state,
+std::u16string GetImportNotificationBody(ipfs::ImportState state,
                                          const GURL& shareable_link) {
   switch (state) {
     case ipfs::IPFS_IMPORT_SUCCESS:
@@ -159,12 +159,12 @@ base::string16 GetImportNotificationBody(ipfs::ImportState state,
       NOTREACHED();
       break;
   }
-  return base::string16();
+  return std::u16string();
 }
 
 std::unique_ptr<message_center::Notification> CreateMessageCenterNotification(
-    const base::string16& title,
-    const base::string16& body,
+    const std::u16string& title,
+    const std::u16string& body,
     const std::string& uuid,
     const GURL& link) {
   message_center::RichNotificationData notification_data;
@@ -174,7 +174,7 @@ std::unique_ptr<message_center::Notification> CreateMessageCenterNotification(
   notification_data.context_message = base::ASCIIToUTF16(" ");
   auto notification = std::make_unique<message_center::Notification>(
       message_center::NOTIFICATION_TYPE_SIMPLE, uuid, title, body, gfx::Image(),
-      base::string16(), link,
+      std::u16string(), link,
       message_center::NotifierId(message_center::NotifierType::SYSTEM_COMPONENT,
                                  kNotifierId),
       notification_data, nullptr);
@@ -407,8 +407,8 @@ void IPFSTabHelper::OnImportCompleted(const ipfs::ImportedData& data) {
   }
 }
 
-void IPFSTabHelper::PushNotification(const base::string16& title,
-                                     const base::string16& body,
+void IPFSTabHelper::PushNotification(const std::u16string& title,
+                                     const std::u16string& body,
                                      const GURL& link) {
   auto notification =
       CreateMessageCenterNotification(title, body, base::GenerateGUID(), link);
@@ -444,7 +444,7 @@ void IPFSTabHelper::SelectFileForImport() {
   file_types.allowed_paths =
       ui::SelectFileDialog::FileTypeInfo::ANY_PATH_OR_URL;
   select_file_dialog_->SelectFile(
-      ui::SelectFileDialog::SELECT_OPEN_FILE, base::string16(), directory,
+      ui::SelectFileDialog::SELECT_OPEN_FILE, std::u16string(), directory,
       &file_types, 0, base::FilePath::StringType(), parent_window, NULL);
 }
 
