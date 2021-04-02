@@ -18,7 +18,6 @@
 #include "components/network_time/network_time_tracker.h"
 #include "components/omnibox/common/omnibox_features.h"
 #include "components/password_manager/core/common/password_manager_features.h"
-#include "components/safe_browsing/core/features.h"
 #include "components/security_state/core/features.h"
 #include "content/public/browser/render_view_host.h"
 #include "content/public/common/content_features.h"
@@ -78,8 +77,6 @@ IN_PROC_BROWSER_TEST_F(BraveMainDelegateBrowserTest, DisabledFeatures) {
       &features::kWebOTP,
       &kSharingQRCodeGenerator,
       &network_time::kNetworkTimeServiceQuerying,
-      &safe_browsing::kEnhancedProtection,
-      &safe_browsing::kEnhancedProtectionMessageInInterstitials,
   };
 
   for (const auto* feature : disabled_features)
