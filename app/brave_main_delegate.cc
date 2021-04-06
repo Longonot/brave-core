@@ -227,6 +227,7 @@ bool BraveMainDelegate::BasicStartupComplete(int* exit_code) {
     features::kTabHoverCards.name,
     features::kWebOTP.name,
     kSharingQRCodeGenerator.name,
+    net::features::kFirstPartySets.name,
     network_time::kNetworkTimeServiceQuerying.name,
 #if defined(OS_ANDROID)
     features::kWebNfc.name,
