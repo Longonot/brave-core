@@ -58,11 +58,12 @@ ExtensionFunction::ResponseAction FtxGetFuturesDataFunction::Run() {
 void FtxGetFuturesDataFunction::OnFuturesData(const FTXFuturesData& data) {
   base::ListValue result;
 
-  for (const auto& data_point : data) {
+  for (const TokenPriceData& currency : data) {
     auto point = std::make_unique<base::Value>(base::Value::Type::DICTIONARY);
-    for (const auto& att : data_point) {
-      point->SetStringKey(att.first, att.second);
-    }
+    point->SetStringKey("symbol", currency.symbol);
+    point->SetDoubleKey("price", currency.price);
+    point->SetDoubleKey("percentChangeDay", currency.percentChangeDay);
+    point->SetDoubleKey("volumeDay", currency.volumeDay);
     result.Append(std::move(point));
   }
 
@@ -96,7 +97,7 @@ void FtxGetChartDataFunction::OnChartData(const FTXChartData& data) {
   for (const auto& data_point : data) {
     auto point = std::make_unique<base::Value>(base::Value::Type::DICTIONARY);
     for (const auto& att : data_point) {
-      point->SetStringKey(att.first, att.second);
+      point->SetDoubleKey(att.first, att.second);
     }
     result.Append(std::move(point));
   }
@@ -187,7 +188,7 @@ void FtxGetAccountBalancesFunction::OnGetAccountBalances(
   base::Value result(base::Value::Type::DICTIONARY);
 
   for (const auto& balance : balances) {
-    result.SetStringKey(balance.first, balance.second);
+    result.SetDoubleKey(balance.first, balance.second);
   }
 
   Respond(TwoArguments(std::move(result), base::Value(auth_invalid)));

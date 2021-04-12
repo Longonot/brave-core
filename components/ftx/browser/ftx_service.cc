@@ -68,6 +68,20 @@ FTXService::FTXService(content::BrowserContext* context)
           content::BrowserContext::GetDefaultStoragePartition(context_)
               ->GetURLLoaderFactoryForBrowserProcess()),
       weak_factory_(this) {}
+      weak_factory_(this) {
+  PrefService* prefs = user_prefs::UserPrefs::Get(context);
+  // Get access token from prefs
+  std::string encoded_encrypted_access_token =
+      prefs->GetString(kFTXAccessToken);
+  std::string encrypted_access_token;
+  if (!base::Base64Decode(encoded_encrypted_access_token,
+                          &encrypted_access_token)) {
+    LOG(ERROR) << "FTX: Could not decode Token info from prefs";
+  } else {
+    if (!OSCrypt::DecryptString(encrypted_access_token, &access_token_)) {
+      LOG(ERROR) << "Could not decrypt and save Gemini access token";
+    }
+  }
 
 FTXService::~FTXService() {}
 
@@ -100,8 +114,12 @@ bool FTXService::GetChartData(const std::string& symbol,
       api_host, std::string(get_market_data_path) + "/" + symbol + "/candles");
   url = net::AppendQueryParameter(url, "resolution", "14400");
   url = net::AppendQueryParameter(url, "limit", "42");
-  url = net::AppendQueryParameter(url, "start_time", start);
-  url = net::AppendQueryParameter(url, "end_time", end);
+  if (!start.empty()) {
+    url = net::AppendQueryParameter(url, "start_time", start);
+  }
+  if (!end.empty()) {
+    url = net::AppendQueryParameter(url, "end_time", end);
+  }
   return NetworkRequest(url, "GET", "", std::move(internal_callback), false);
 }
 
