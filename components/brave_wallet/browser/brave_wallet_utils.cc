@@ -375,4 +375,18 @@ std::string Namehash(const std::string& name) {
   return ToHex(hash);
 }
 
+void SecureZeroData(void* data, size_t size) {
+  if (data == nullptr || size == 0)
+    return;
+#if defined(OS_WIN)
+  SecureZeroMemory(data, size);
+#else
+  // 'volatile' is required. Otherwise optimizers can remove this function
+  // if cleaning local variables, which are not used after that.
+  volatile uint8_t* d = (volatile uint8_t*)data;
+  for (size_t i = 0; i < size; i++)
+    d[i] = 0;
+#endif
+}
+
 }  // namespace brave_wallet
