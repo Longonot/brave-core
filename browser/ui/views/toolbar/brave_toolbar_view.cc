@@ -175,9 +175,7 @@ void BraveToolbarView::Init() {
 
 #if BUILDFLAG(BRAVE_WALLET_ENABLED)
   if (brave_wallet::IsNativeWalletEnabled()) {
-    wallet_ = new WalletButton(
-        base::BindRepeating(callback, browser_, IDC_TOGGLE_WALLET),
-        profile->GetPrefs());
+    wallet_ = new WalletButton(profile, profile->GetPrefs());
     wallet_->SetTriggerableEventFlags(ui::EF_LEFT_MOUSE_BUTTON |
                                       ui::EF_MIDDLE_MOUSE_BUTTON);
   }

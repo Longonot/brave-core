@@ -65,10 +65,12 @@ template("brave_extra_paks") {
         "$root_gen_dir/brave/brave_generated_resources.pak",
         "$root_gen_dir/brave/brave_unscaled_resources.pak",
         "$root_gen_dir/brave/browser/resources/settings/brave_settings_resources.pak",
+        "$root_gen_dir/brave/wallet_panel_resources.pak",
       ]
     }
 
     deps = [
+      "//brave/browser/resources/wallet_panel:resources",
       "//brave/components/resources",
       "//brave/ui/webui/resources",
     ]

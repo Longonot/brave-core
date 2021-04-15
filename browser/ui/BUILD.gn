@@ -11,6 +11,7 @@ import("//brave/components/tor/buildflags/buildflags.gni")
 import("//build/config/features.gni")
 import("//chrome/common/features.gni")
 import("//components/gcm_driver/config.gni")
+import("//mojo/public/tools/bindings/mojom.gni")
 import("//third_party/widevine/cdm/widevine.gni")
 
 source_set("favicon_source") {
@@ -221,6 +222,7 @@ source_set("ui") {
 
     # //chrome/browser/ui depends on //brave/browser/ui, add this target here
     # to pull in dependencies needed for the overwrite codes in chromium_src.
+    "//brave/browser/ui/webui/wallet_panel:mojo_bindings",
     "//brave/chromium_src/chrome/browser/ui",
     "//brave/common",
     "//brave/common:pref_names",
@@ -468,10 +470,17 @@ source_set("ui") {
     sources += [
       "views/toolbar/wallet_button.cc",
       "views/toolbar/wallet_button.h",
+      "webui/wallet_panel/wallet_panel_page_handler.cc",
+      "webui/wallet_panel/wallet_panel_page_handler.h",
+      "webui/wallet_panel/wallet_panel_ui.cc",
+      "webui/wallet_panel/wallet_panel_ui.h",
       "webui/brave_wallet_ui.cc",
       "webui/brave_wallet_ui.h",
     ]
-    deps += [ "//brave/components/brave_wallet_ui:generated_resources" ]
+    deps += [
+      "//brave/components/brave_wallet_ui:page_generated_resources",
+      "//brave/components/brave_wallet_ui:panel_generated_resources",
+    ]
   }
 
   if (toolkit_views) {
