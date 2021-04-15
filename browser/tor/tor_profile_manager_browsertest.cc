@@ -330,7 +330,8 @@ IN_PROC_BROWSER_TEST_F(TorProfileManagerExtensionTest,
       InstallExtension(incognito_not_allowed_ext_path(), 1);
   const std::string incognito_not_allowed_id = incognito_not_allowed_ext->id();
   parent_extension_prefs->SetIsIncognitoEnabled(incognito_not_allowed_id, true);
-  Profile* primary_otr_profile = parent_profile->GetPrimaryOTRProfile();
+  Profile* primary_otr_profile =
+      parent_profile->GetPrimaryOTRProfile(/*create_if_needed=*/true);
   EXPECT_FALSE(extensions::util::IsIncognitoEnabled(incognito_not_allowed_id,
                                                     primary_otr_profile));
   EXPECT_FALSE(extensions::util::IsIncognitoEnabled(incognito_not_allowed_id,

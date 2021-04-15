@@ -40,7 +40,8 @@ TemplateURLData CreateTestSearchEngine() {
 IN_PROC_BROWSER_TEST_F(SearchEngineProviderServiceTest,
                        PrivateWindowPrefTestWithNonQwantRegion) {
   Profile* profile = browser()->profile();
-  Profile* incognito_profile = profile->GetPrimaryOTRProfile();
+  Profile* incognito_profile =
+      profile->GetPrimaryOTRProfile(/*create_if_needed=*/true);
 
   // This test case is only for non-qwant region.
   if (brave::IsRegionForQwant(profile))
@@ -89,7 +90,8 @@ IN_PROC_BROWSER_TEST_F(SearchEngineProviderServiceTest,
 IN_PROC_BROWSER_TEST_F(SearchEngineProviderServiceTest,
                        PrivateWindowTestWithQwantRegion) {
   Profile* profile = browser()->profile();
-  Profile* incognito_profile = profile->GetPrimaryOTRProfile();
+  Profile* incognito_profile =
+      profile->GetPrimaryOTRProfile(/*create_if_needed=*/true);
 
   // This test case is only for qwant region.
   if (!brave::IsRegionForQwant(profile))
