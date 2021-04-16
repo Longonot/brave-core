@@ -257,7 +257,7 @@
   <message name="IDS_SETTINGS_ADD_FINGERPRINT_DIALOG_INSTRUCTION_LOCATE_SCANNER_POWER_BUTTON" desc="Text in the add fingerprint dialog telling users to place finger on the power button which is the sensor.">
     Touch the power button with your finger
   </message>
-    <message name="IDS_SETTINGS_ADD_FINGERPRINT_DIALOG_INSTRUCTION_LOCATE_SCANNER_POWER_BUTTON_ARIA_LABEL" desc="Aria label in the add fingerprint dialog telling users that the fingerprint sensor is in the power button. Only visible by screen reader software.">
+  <message name="IDS_SETTINGS_ADD_FINGERPRINT_DIALOG_INSTRUCTION_LOCATE_SCANNER_POWER_BUTTON_ARIA_LABEL" desc="Aria label in the add fingerprint dialog telling users that the fingerprint sensor is in the power button. Only visible by screen reader software.">
     The fingerprint sensor is in the power button. Touch it lightly with any finger.
   </message>
   <message name="IDS_SETTINGS_ADD_FINGERPRINT_DIALOG_INSTRUCTION_LOCATE_SCANNER_KEYBOARD" desc="Text in the add fingerprint dialog telling users to place finger on the sensor on the keyboard.">
@@ -266,11 +266,17 @@
   <message name="IDS_SETTINGS_ADD_FINGERPRINT_DIALOG_INSTRUCTION_LOCATE_SCANNER_KEYBOARD_BOTTOM_LEFT_ARIA_LABEL" desc="Aria label in the add fingerprint dialog telling users that the fingerprint sensor is in the bottom left corner of the keyboard. Only visible by screen reader software.">
     The fingerprint sensor is the bottom left-hand key on your keyboard. Touch it lightly with any finger.
   </message>
-    <message name="IDS_SETTINGS_ADD_FINGERPRINT_DIALOG_INSTRUCTION_LOCATE_SCANNER_KEYBOARD_BOTTOM_RIGHT_ARIA_LABEL" desc="Aria label in the add fingerprint dialog telling users that the fingerprint sensor is in the bottom right corner of the keyboard. Only visible by screen reader software.">
+  <message name="IDS_SETTINGS_ADD_FINGERPRINT_DIALOG_INSTRUCTION_LOCATE_SCANNER_KEYBOARD_BOTTOM_RIGHT_ARIA_LABEL" desc="Aria label in the add fingerprint dialog telling users that the fingerprint sensor is in the bottom right corner of the keyboard. Only visible by screen reader software.">
     The fingerprint sensor is the bottom right-hand key on your keyboard. Touch it lightly with any finger.
   </message>
-    <message name="IDS_SETTINGS_ADD_FINGERPRINT_DIALOG_INSTRUCTION_LOCATE_SCANNER_KEYBOARD_TOP_RIGHT_ARIA_LABEL" desc="Aria label in the add fingerprint dialog telling users that the fingerprint sensor is in the top right corner of the keyboard. Only visible by screen reader software.">
+  <message name="IDS_SETTINGS_ADD_FINGERPRINT_DIALOG_INSTRUCTION_LOCATE_SCANNER_KEYBOARD_TOP_RIGHT_ARIA_LABEL" desc="Aria label in the add fingerprint dialog telling users that the fingerprint sensor is in the top right corner of the keyboard. Only visible by screen reader software.">
     The fingerprint sensor is the top right-hand key on your keyboard. Touch it lightly with any finger.
+  </message>
+  <message name="IDS_SETTINGS_ADD_FINGERPRINT_DIALOG_INSTRUCTION_LOCATE_SCANNER_RIGHT_SIDE_ARIA_LABEL" desc="Aria label in the add fingerprint dialog telling users that the fingerprint sensor is in the right side of the chrome device. Only visible by screen reader software.">
+    The fingerprint sensor is on the right-hand side of your <ph name="DEVICE_TYPE">$1<ex>Bravebook</ex></ph>. Touch it lightly with any finger.
+  </message>
+  <message name="IDS_SETTINGS_ADD_FINGERPRINT_DIALOG_INSTRUCTION_LOCATE_SCANNER_LEFT_SIDE_ARIA_LABEL" desc="Aria label in the add fingerprint dialog telling users that the fingerprint sensor is in the left side of the chrome device. Only visible by screen reader software.">
+    The fingerprint sensor is on the left-hand side of your <ph name="DEVICE_TYPE">$1<ex>Bravebook</ex></ph>. Touch it lightly with any finger.
   </message>
 
   <!-- Languages and Inputs (OS settings) -->
@@ -363,6 +369,12 @@
   </message>
   <message name="IDS_OS_SETTINGS_LANGUAGES_ADD_SPELL_CHECK_LANGUAGES_TITLE" translateable="false" desc="Title for the dialog that allows users to select new languages to add to their list of spell check languages.">
     Add spell check languages
+  </message>
+  <message name="IDS_OS_SETTINGS_LANGUAGES_SUGGESTED_SPELL_CHECK_LANGUAGES_LABEL" translateable="false" desc="Title of the list of spell check languages suggested to users.">
+    Suggested
+  </message>
+  <message name="IDS_OS_SETTINGS_LANGUAGES_ALL_SPELL_CHECK_LANGUAGES_LABEL" translateable="false" desc="Title of the list of all spell check languages.">
+    All languages
   </message>
   <message name="IDS_OS_SETTINGS_LANGUAGES_SPELL_CHECK_LANGUAGE_NOT_ALLOWED" translateable="false" desc="Tooltip for policy icon when a spell check language is not allowed.">
     Your administrator doesn't allow this spell check language

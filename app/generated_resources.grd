@@ -290,6 +290,11 @@ are declared in tools/grit/grit_rule.gni.
       <!-- Profiles specific strings -->
       <part file="profiles_strings.grdp" />
 
+      <!-- Web app intent picker strings -->
+      <if expr="is_win or is_macosx or is_linux">
+        <part file="protocol_handler_intent_picker_strings.grdp" />
+      </if>
+
       <!-- Brave-OS-specific strings -->
       <if expr="chromeos">
         <part file="chromeos_strings.grdp" />
@@ -3226,11 +3231,6 @@ are declared in tools/grit/grit_rule.gni.
         Empty Cache and Hard Reload
       </message>
 
-      <!-- Fullscreen mode -->
-      <message name="IDS_EXIT_FULLSCREEN_MODE" desc="Clickable message displayed on entering full screen mode. Clicking on the link exits full screen mode.">
-        Exit full screen
-      </message>
-
       <!-- Tab sharing infobar -->
       <message name="IDS_TAB_SHARING_INFOBAR_SHARING_CURRENT_TAB_LABEL" desc="Text displayed on an infobar when current tab is being shared.">
        Sharing this tab to <ph name="APP_NAME">$1<ex>meet.google.com</ex></ph>
@@ -5517,7 +5517,7 @@ Keep your key file in a safe place. You will need it to create new versions of y
         your carts
       </message>
       <message name="IDS_NTP_MODULES_DRIVE_SENTENCE" desc="Name of the Drive module in sentence case shown in various UIs.">
-        Drive files
+        Google Drive files
       </message>
       <message name="IDS_NTP_MODULES_DUMMY_LOWER" translateable="false" desc="Name of the dummy module in lowercase shown in various UIs.">
         this module
@@ -5529,7 +5529,7 @@ Keep your key file in a safe place. You will need it to create new versions of y
         Even Better Module
       </message>
       <message name="IDS_NTP_MODULES_DRIVE_TITLE" desc="Title shown in the header of the drive module and various other UIs.">
-        From Google Drive
+        From your Google Drive
       </message>
       <message name="IDS_NTP_MODULES_KALEIDOSCOPE_TITLE" desc="Title shown in the header of the Kaleidoscope module.">
         Top picks for you
@@ -5574,7 +5574,7 @@ Keep your key file in a safe place. You will need it to create new versions of y
         Up to <ph name="DISCOUNT_UP_TO_AMOUNT">$1<ex>15%</ex></ph> off
       </message>
       <message name="IDS_NTP_MODULES_CART_DISCOUNT_CONSENT_CONTENT" desc="Text shown on the consent card for rule-based discount asking if users would like to give their consent to the feature.">
-        Ask Brave to find discounts on what you’ve added to your carts?
+        Allow Brave to find discounts on what you add to your carts?
       </message>
       <message name="IDS_NTP_MODULES_CART_DISCOUNT_CONSENT_ACCEPT" desc="Text shown on the accept button of the consent card for rule-based discount. By clicking this button, users have chosen to opt in the feature and let Brave get discounts for them. See consent request in IDS_NTP_MODULES_CART_DISCOUNT_CONSENT_CONTENT.">
         Get discounts
@@ -5821,6 +5821,9 @@ Keep your key file in a safe place. You will need it to create new versions of y
       <message name="IDS_ACCNAME_CHROMELABS_COMBOBOX" desc="The accessible name for the experiment's combobox to select between experiment states. ">
         Select experiment state for the <ph name="EXPERIMENT_NAME">$1<ex>Tab Scrolling</ex></ph> experiment.
       </message>
+       <message name="IDS_ACCNAME_CHROMELABS_COMBOBOX_MAC" desc="The accessible name for the experiment's combobox to select between experiment states. This is used only for MacOS">
+        Select experiment state for the <ph name="EXPERIMENT_NAME">$1<ex>Tab Scrolling</ex></ph> experiment. Experiment description: <ph name="EXPERIMENT_DESCRIPTION">$2<ex>Enables tab strip to scroll left and right when full.</ex></ph>
+      </message>
       <message name="IDS_ACCNAME_SEPARATOR" desc="The accessible name for a separator.">
         Separator
       </message>
@@ -5899,12 +5902,6 @@ Keep your key file in a safe place. You will need it to create new versions of y
       </message>
       <message name="IDS_INCOGNITOWINDOW_PROMO_3" desc="Variations option 4. Text shown on promotional UI appearing next to the App Menu button, which encourages users to use it.">
         To browse privately, click the dots icon menu to open a private window
-      </message>
-      <message name="IDS_LIVE_CAPTION_PROMO" desc="Text shown on promotional UI appearing next to the global media controls button">
-        Get captions for your audio and video
-      </message>
-      <message name="IDS_LIVE_CAPTION_PROMO_SCREENREADER" desc="Text announced encouraging users to open live caption">
-        Get captions for your audio and video by enabling Live Caption in settings
       </message>
       <message name="IDS_NEWTAB_PROMO_0" desc="Variations option 1. Text shown on promotional UI appearing next to the New Tab button, which encourages users to use it.">
         Open a new tab with one click
@@ -6793,6 +6790,12 @@ Keep your key file in a safe place. You will need it to create new versions of y
       </message>
       <message name="IDS_TAB_SEARCH_A11Y_FOUND_TABS_FOR" desc="Plural form of a11y message after user changes search field when search filed is not empty.">
         Found <ph name="NUM">$1<ex>2</ex></ph> Tabs For '<ph name="SEARCH_TEXT">$2<ex>google</ex></ph>'
+      </message>
+      <message name="IDS_TAB_SEARCH_A11Y_OPEN_TAB" desc="Singular form of a11y message announced after user selects an open tab.">
+        Open Tab
+      </message>
+      <message name="IDS_TAB_SEARCH_A11Y_RECENTLY_CLOSED_TAB" desc="Singular form of a11y message announced after user selects a recently closed tab.">
+        Recently Closed Tab
       </message>
       <message name="IDS_TAB_SEARCH_OPEN_TABS" desc="The label on the tab search list section corresponding to open tabs.">
         Open Tabs
@@ -9365,9 +9368,6 @@ Please help our engineers fix this problem. Tell us what happened right before y
       <message name="IDS_FULLSCREEN_PRESS_ESC_TO_EXIT_MOUSELOCK" desc="Text displayed in the bubble to tell users how to return from mouselock mode (where the mouse cursor is hidden) to normal mode. Please surround the name of the key (e.g. 'Esc') in pipe characters so it can be rendered as a key.">
         Press |<ph name="ACCELERATOR">$1<ex>Esc</ex></ph>| to show your cursor
       </message>
-      <message name="IDS_FULLSCREEN_HOLD_ESC_TO_EXIT_FULLSCREEN" desc="Text displayed in the bubble to tell users how to return from fullscreen mode (where the web page occupies the entire screen) to normal mode. Please surround the name of the key (e.g. 'Esc') in pipe characters so it can be rendered as a key.">
-        Press and hold |<ph name="ACCELERATOR">$1<ex>Esc</ex></ph>| to exit full screen
-      </message>
 
       <!-- Register Protocol Handler Strings -->
       <message name="IDS_REGISTER_PROTOCOL_HANDLER_MAILTO_NAME" desc="A more user friendly way of describing mailto: links.">
@@ -9486,23 +9486,14 @@ Please help our engineers fix this problem. Tell us what happened right before y
       <message name="IDS_LIVE_CAPTION_BUBBLE_ERROR" desc="Error message for the Live Caption bubble when Live Captions are unavailable.">
         Live Caption is not available right now
       </message>
-    <if expr="chromeos">
       <message name="IDS_LIVE_CAPTION_BUBBLE_APPEAR_SCREENREADER_ANNOUNCEMENT" desc="Announcement to screen readers on BraveOS when the Live Caption bubble appears to inform users of how to focus the bubble.">
-        Live Caption visible, press Ctrl + Back or Ctrl + Forward to cycle focus
+        Live Caption visible, use window switcher to focus
       </message>
-    </if>
-    <if expr="is_macosx">
-      <message name="IDS_LIVE_CAPTION_BUBBLE_APPEAR_SCREENREADER_ANNOUNCEMENT" desc="Announcement to screen readers on MacOS when the Live Caption bubble appears to inform users of how to focus the bubble.">
-        Live Caption visible, press ⌘ + Option + Up arrow or Down arrow to cycle focus
+      <message name="IDS_LIVE_CAPTION_PROMO" desc="Text shown on promotional UI appearing next to the global media controls button">
+        Get captions for your audio and video
       </message>
-    </if>
-    <if expr="is_win or desktop_linux">
-      <message name="IDS_LIVE_CAPTION_BUBBLE_APPEAR_SCREENREADER_ANNOUNCEMENT" desc="Announcement to screen readers on Windows or Linux when the Live Caption bubble appears to inform users of how to focus the bubble.">
-        Live Caption visible, press F6 to cycle focus
-      </message>
-    </if>
-      <message name="IDS_LIVE_CAPTION_BUBBLE_MOVE_SCREENREADER_ANNOUNCEMENT" desc="Announcement to screen readers when the Live Caption bubble moves.">
-        Moved caption bubble to <ph name="POSITION_ON_SCREEN_FROM_LEFT">$1<ex>20</ex></ph>% across, <ph name="POSITION_ON_SCREEN_FROM_TOP">$2<ex>80</ex></ph>% down
+      <message name="IDS_LIVE_CAPTION_PROMO_SCREENREADER" desc="Text announced encouraging users to open live caption">
+        Get captions for your audio and video by enabling Live Caption in settings
       </message>
 
       <!-- Caret browsing. -->
