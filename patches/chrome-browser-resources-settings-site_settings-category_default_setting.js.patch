@@ -1,11 +1,11 @@
 diff --git a/chrome/browser/resources/settings/site_settings/category_default_setting.js b/chrome/browser/resources/settings/site_settings/category_default_setting.js
-index 78ebfedb35d6e82979e47f32b19bc04d2f9a61cf..8d1bf7298ea1a23a70561e3899be5b104f6839fc 100644
+index 28bba3f73ae27fdb694fa28a7cf7e84c2eb1c659..5ea0aca0b2026da1c4643a9e7c5994ce72036de8 100644
 --- a/chrome/browser/resources/settings/site_settings/category_default_setting.js
 +++ b/chrome/browser/resources/settings/site_settings/category_default_setting.js
-@@ -165,6 +165,7 @@ Polymer({
-       case ContentSettingsTypes.PAYMENT_HANDLER:
-       case ContentSettingsTypes.POPUPS:
+@@ -169,6 +169,7 @@ Polymer({
        case ContentSettingsTypes.PROTOCOL_HANDLERS:
+       case ContentSettingsTypes.SENSORS:
+       case ContentSettingsTypes.SOUND:
 +      case ContentSettingsTypes.AUTOPLAY:
          // "Allowed" vs "Blocked".
          this.browserProxy.setDefaultValueForContentType(

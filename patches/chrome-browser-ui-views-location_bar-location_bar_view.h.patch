@@ -1,5 +1,5 @@
 diff --git a/chrome/browser/ui/views/location_bar/location_bar_view.h b/chrome/browser/ui/views/location_bar/location_bar_view.h
-index f20833babe641c5d6211990de548546034c781af..bb01ec0c7a4e28fcf9731fc037639e092f64b172 100644
+index 20faf5b00e744ef895dab8f128acef4d39e98a93..f8e8ed6ef97a679dd3d96cca090a7e210fdf4e6c 100644
 --- a/chrome/browser/ui/views/location_bar/location_bar_view.h
 +++ b/chrome/browser/ui/views/location_bar/location_bar_view.h
 @@ -110,6 +110,7 @@ class LocationBarView : public LocationBar,
@@ -18,10 +18,10 @@ index f20833babe641c5d6211990de548546034c781af..bb01ec0c7a4e28fcf9731fc037639e09
    void Update(content::WebContents* contents);
  
    // Clears the location bar's state for |contents|.
-@@ -238,6 +240,7 @@ class LocationBarView : public LocationBar,
-       security_state::SecurityLevel security_level) const override;
-   ui::ImageModel GetLocationIcon(LocationIconView::Delegate::IconFetchedCallback
-                                      on_icon_fetched) const override;
+@@ -241,6 +243,7 @@ class LocationBarView : public LocationBar,
+   std::vector<ContentSettingImageView*>& GetContentSettingViewsForTest() {
+     return content_setting_views_;
+   }
 +  BRAVE_LOCATION_BAR_VIEW_H_
  
   private:
