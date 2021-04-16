@@ -1,5 +1,5 @@
 diff --git a/components/page_info/page_info_ui.cc b/components/page_info/page_info_ui.cc
-index 79430dce8b2faed47e2a13ae0205b25a7ace9750..930cf68c3682706cc05838952a4b32427ece33ab 100644
+index 604c8c3bfb35b5c11dbf30b5f0dabb3cc89665b9..bc59c49ea6cc6241e1150bfa541f4d3ba993136b 100644
 --- a/components/page_info/page_info_ui.cc
 +++ b/components/page_info/page_info_ui.cc
 @@ -657,6 +657,7 @@ const gfx::ImageSkia PageInfoUI::GetPermissionIcon(

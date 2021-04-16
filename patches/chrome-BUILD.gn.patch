@@ -1,5 +1,5 @@
 diff --git a/chrome/BUILD.gn b/chrome/BUILD.gn
-index b7a01a6160b770ef25db0198b7e310c8a7bd8f95..0fcf8a77b9d5dbba2bd4086f1bf6a2a25e2dcd72 100644
+index e2f1d3095a2f25047cadee493c469d15212975b4..b4dd15c0cf115ece7518fce8f33ce33a5354173e 100644
 --- a/chrome/BUILD.gn
 +++ b/chrome/BUILD.gn
 @@ -169,6 +169,7 @@ if (!is_android && !is_mac) {
@@ -71,13 +71,13 @@ index b7a01a6160b770ef25db0198b7e310c8a7bd8f95..0fcf8a77b9d5dbba2bd4086f1bf6a2a2
          "CHROMIUM_SHORT_NAME=$chrome_product_short_name",
 @@ -1127,6 +1134,7 @@ if (is_win) {
      if (is_chrome_branded) {
-       deps += [ ":default_apps" ]
+       deps += [ ":preinstalled_apps" ]
      }
 +    deps += [ "//brave:framework_bundle_data" ] if (defined(chrome_framework_version)) { framework_contents += [ "Frameworks", ] }
  
      ldflags = [ "-Wl,-install_name,@executable_path/../Frameworks/$chrome_framework_name.framework/Versions/$chrome_version_full/$chrome_framework_name" ]
  
-@@ -1293,6 +1301,7 @@ if (is_win) {
+@@ -1297,6 +1305,7 @@ if (is_win) {
  
  group("browser_dependencies") {
    public_deps = [
@@ -85,7 +85,7 @@ index b7a01a6160b770ef25db0198b7e310c8a7bd8f95..0fcf8a77b9d5dbba2bd4086f1bf6a2a2
      "//build:branding_buildflags",
      "//build:chromeos_buildflags",
      "//chrome/app:shutdown_signal_handlers",
-@@ -1395,12 +1404,13 @@ group("child_dependencies") {
+@@ -1399,12 +1408,13 @@ group("child_dependencies") {
        # this is OK because all of content is linked into one library.
        "//content/browser",
      ]
@@ -100,7 +100,7 @@ index b7a01a6160b770ef25db0198b7e310c8a7bd8f95..0fcf8a77b9d5dbba2bd4086f1bf6a2a2
      output = "$target_gen_dir/chrome_exe_version.rc"
    }
  
-@@ -1454,6 +1464,7 @@ group("resources") {
+@@ -1458,6 +1468,7 @@ group("resources") {
      "//chrome/browser:resources",
      "//chrome/common:resources",
      "//chrome/renderer:resources",

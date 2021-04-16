@@ -1,8 +1,8 @@
 diff --git a/chrome/installer/linux/BUILD.gn b/chrome/installer/linux/BUILD.gn
-index 35f01d0a423f5c395df3539d65df18670f63ed9e..a639677008f17a27cd9d1ec72b7dbba632a29142 100644
+index 3369b5be61936c553f6bc9f694c6335f056e44f5..f9d007addb92a6f95388588c916f2fd86a1fa55c 100644
 --- a/chrome/installer/linux/BUILD.gn
 +++ b/chrome/installer/linux/BUILD.gn
-@@ -74,6 +74,8 @@ if (enable_swiftshader) {
+@@ -75,6 +75,8 @@ if (enable_swiftshader) {
    ]
  }
  
@@ -11,7 +11,7 @@ index 35f01d0a423f5c395df3539d65df18670f63ed9e..a639677008f17a27cd9d1ec72b7dbba6
  packaging_files_binaries = packaging_files_executables + packaging_files_shlibs
  
  copy("swiftshader_libs") {
-@@ -174,7 +176,9 @@ strip_binary("strip_chrome_binary") {
+@@ -175,7 +177,9 @@ strip_binary("strip_chrome_binary") {
    binary_input = "$root_out_dir/chrome"
    symbol_output = "$root_out_dir/chrome.debug"
    stripped_binary_output = "$root_out_dir/chrome.stripped"
@@ -21,7 +21,7 @@ index 35f01d0a423f5c395df3539d65df18670f63ed9e..a639677008f17a27cd9d1ec72b7dbba6
  }
  
  # This target builds all "normal" Linux installers.  You must set
-@@ -223,6 +227,7 @@ copy("common_packaging_files") {
+@@ -224,6 +228,7 @@ copy("common_packaging_files") {
    }
  
    sources += [ "//buildtools/third_party/eu-strip/bin/eu-strip" ]
@@ -29,7 +29,7 @@ index 35f01d0a423f5c395df3539d65df18670f63ed9e..a639677008f17a27cd9d1ec72b7dbba6
  
    outputs = [ "$root_out_dir/installer/common/{{source_file_part}}" ]
  }
-@@ -319,6 +324,7 @@ group("installer_deps") {
+@@ -320,6 +325,7 @@ group("installer_deps") {
      "//sandbox/linux:chrome_sandbox",
      "//third_party/crashpad/crashpad/handler:crashpad_handler",
    ]
@@ -37,7 +37,7 @@ index 35f01d0a423f5c395df3539d65df18670f63ed9e..a639677008f17a27cd9d1ec72b7dbba6
    if (enable_nacl) {
      public_deps += [
        "//components/nacl/loader:nacl_helper",
-@@ -353,6 +359,9 @@ group("installer_deps") {
+@@ -357,6 +363,9 @@ group("installer_deps") {
  template("linux_package") {
    assert(defined(invoker.channel))
    channel = invoker.channel
@@ -47,7 +47,7 @@ index 35f01d0a423f5c395df3539d65df18670f63ed9e..a639677008f17a27cd9d1ec72b7dbba6
  
    if (is_chrome_branded) {
      package = "google-chrome"
-@@ -516,3 +525,6 @@ linux_package("beta") {
+@@ -520,3 +529,6 @@ linux_package("beta") {
  linux_package("unstable") {
    channel = "unstable"
  }
