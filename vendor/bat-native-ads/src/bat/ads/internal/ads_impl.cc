@@ -12,6 +12,7 @@
 #include "bat/ads/ad_info.h"
 #include "bat/ads/ad_notification_info.h"
 #include "bat/ads/ads_client.h"
+#include "bat/ads/brave_today_ad_info.h"
 #include "bat/ads/confirmation_type.h"
 #include "bat/ads/internal/account/account.h"
 #include "bat/ads/internal/account/confirmations/confirmations_state.h"
@@ -32,6 +33,7 @@
 #include "bat/ads/internal/ad_transfer/ad_transfer.h"
 #include "bat/ads/internal/ads/ad_notifications/ad_notification.h"
 #include "bat/ads/internal/ads/ad_notifications/ad_notifications.h"
+#include "bat/ads/internal/ads/brave_today_ads/brave_today_ad.h"
 #include "bat/ads/internal/ads/new_tab_page_ads/new_tab_page_ad.h"
 #include "bat/ads/internal/ads/promoted_content_ads/promoted_content_ad.h"
 #include "bat/ads/internal/ads_client_helper.h"
@@ -305,6 +307,12 @@ void AdsImpl::OnPromotedContentAdEvent(
   promoted_content_ad_->FireEvent(uuid, creative_instance_id, event_type);
 }
 
+void AdsImpl::OnBraveTodayAdEvent(const std::string& uuid,
+                                  const std::string& creative_instance_id,
+                                  const BraveTodayAdEventType event_type) {
+  brave_today_ad_->FireEvent(uuid, creative_instance_id, event_type);
+}
+
 void AdsImpl::RemoveAllHistory(RemoveAllHistoryCallback callback) {
   Client::Get()->RemoveAllHistory();
 
@@ -444,6 +452,9 @@ void AdsImpl::set(privacy::TokenGeneratorInterface* token_generator) {
 
   promoted_content_ad_ = std::make_unique<PromotedContentAd>();
   promoted_content_ad_->AddObserver(this);
+
+  brave_today_ad_ = std::make_unique<BraveTodayAd>();
+  brave_today_ad_->AddObserver(this);
 
   client_ = std::make_unique<Client>();
 
@@ -661,6 +672,16 @@ void AdsImpl::OnPromotedContentAdViewed(const PromotedContentAdInfo& ad) {
 }
 
 void AdsImpl::OnPromotedContentAdClicked(const PromotedContentAdInfo& ad) {
+  ad_transfer_->set_last_clicked_ad(ad);
+
+  account_->Deposit(ad.creative_instance_id, ConfirmationType::kClicked);
+}
+
+void AdsImpl::OnBraveTodayAdViewed(const BraveTodayAdInfo& ad) {
+  account_->Deposit(ad.creative_instance_id, ConfirmationType::kViewed);
+}
+
+void AdsImpl::OnBraveTodayAdClicked(const BraveTodayAdInfo& ad) {
   ad_transfer_->set_last_clicked_ad(ad);
 
   account_->Deposit(ad.creative_instance_id, ConfirmationType::kClicked);

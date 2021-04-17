@@ -547,6 +547,16 @@ BATClassAdsBridge(BOOL, isDebug, setDebug, g_is_debug)
                              static_cast<ads::AdNotificationEventType>(eventType));
 }
 
+- (void)reportBraveTodayAdEvent:(NSString*)uuid
+             creativeInstanceId:(NSString*)creativeInstanceId
+                      eventType:(BATBraveTodayAdEventType)eventType {
+  if (![self isAdsServiceRunning]) {
+    return;
+  }
+  ads->OnBraveTodayAdEvent(uuid.UTF8String, creativeInstanceId.UTF8String,
+                           static_cast<ads::BraveAdEventType>(eventType));
+}
+
 - (void)reportNewTabPageAdEvent:(NSString *)wallpaperId creativeInstanceId:(NSString *)creativeInstanceId eventType:(BATNewTabPageAdEventType)eventType
 {
   if (![self isAdsServiceRunning]) { return; }
