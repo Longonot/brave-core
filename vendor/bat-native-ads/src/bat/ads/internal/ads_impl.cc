@@ -601,7 +601,7 @@ void AdsImpl::MaybeServeAdNotification() {
     return;
   }
 
-  ad_notification_serving_->MaybeServe();
+  ad_notification_serving_->MaybeServeAd();
 }
 
 void AdsImpl::MaybeServeAdNotificationsAtRegularIntervals() {
@@ -611,9 +611,9 @@ void AdsImpl::MaybeServeAdNotificationsAtRegularIntervals() {
 
   if (BrowserManager::Get()->IsActive() ||
       AdsClientHelper::Get()->CanShowBackgroundNotifications()) {
-    ad_notification_serving_->ServeAtRegularIntervals();
+    ad_notification_serving_->StartServingAdsAtRegularIntervals();
   } else {
-    ad_notification_serving_->StopServing();
+    ad_notification_serving_->StopServingAdsAtRegularIntervals();
   }
 }
 
@@ -629,7 +629,7 @@ void AdsImpl::OnCatalogUpdated(const Catalog& catalog) {
   account_->SetCatalogIssuers(catalog.GetIssuers());
   account_->TopUpUnblindedTokens();
 
-  epsilon_greedy_bandit_resource_->LoadFromDatabase();
+  epsilon_greedy_bandit_resource_->LoadFromCatalog(catalog);
 }
 
 void AdsImpl::OnAdNotificationViewed(const AdNotificationInfo& ad) {

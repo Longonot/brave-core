@@ -7,10 +7,10 @@
 
 #include "bat/ads/brave_today_ad_info.h"
 #include "bat/ads/internal/ad_events/brave_today_ads/brave_today_ad_event_factory.h"
+#include "bat/ads/internal/ads/brave_today_ads/brave_today_ad_frequency_capping.h"
 #include "bat/ads/internal/bundle/creative_brave_today_ad_info.h"
 #include "bat/ads/internal/database/tables/ad_events_database_table.h"
 #include "bat/ads/internal/database/tables/creative_brave_today_ads_database_table.h"
-#include "bat/ads/internal/frequency_capping/brave_today_ads/brave_today_ads_frequency_capping.h"
 #include "bat/ads/internal/logging.h"
 
 namespace ads {

@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "bat/ads/internal/frequency_capping/brave_today_ads/brave_today_ads_frequency_capping.h"
+#include "bat/ads/internal/ads/brave_today_ads/brave_today_ad_frequency_capping.h"
 
 #include "bat/ads/ad_info.h"
 #include "bat/ads/internal/frequency_capping/exclusion_rules/brave_today_ad_uuid_frequency_cap.h"

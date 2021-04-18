@@ -23,8 +23,9 @@ class AdDelivery {
   bool MaybeDeliverAd(const AdNotificationInfo& ad);
 
  private:
-  void ShowNotification(const AdNotificationInfo& ad);
+  void DeliverAd(const AdNotificationInfo& ad);
 
+  // TODO(tmancey): Decouple
   void RecordAdImpressionForSegment(const std::string& segment);
 };
 

@@ -28,17 +28,18 @@ bool AdDelivery::MaybeDeliverAd(const AdNotificationInfo& ad) {
   }
 
   Client::Get()->UpdateSeenAdNotification(ad.creative_instance_id);
+  Client::Get()->UpdateSeenAdvertiser(ad.advertiser_id);
 
   RecordAdImpressionForSegment(ad.segment);
 
-  ShowNotification(ad);
+  DeliverAd(ad);
 
   return true;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
-void AdDelivery::ShowNotification(const AdNotificationInfo& ad) {
+void AdDelivery::DeliverAd(const AdNotificationInfo& ad) {
   AdNotifications::Get()->PushBack(ad);
 
   AdsClientHelper::Get()->ShowNotification(ad);
