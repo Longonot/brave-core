@@ -304,6 +304,10 @@ source_set("browser_process") {
     sources += [
       "ipfs/content_browser_client_helper.cc",
       "ipfs/content_browser_client_helper.h",
+      "ipfs/import/ipfs_import_controller.cc",
+      "ipfs/import/ipfs_import_controller.h",
+      "ipfs/import/save_package_observer.cc",
+      "ipfs/import/save_package_observer.h",
       "ipfs/ipfs_host_resolver.cc",
       "ipfs/ipfs_host_resolver.h",
       "ipfs/ipfs_service_factory.cc",
