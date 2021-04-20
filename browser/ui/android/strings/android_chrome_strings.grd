@@ -915,6 +915,9 @@ Your Brave account may have other forms of browsing history like searches and ac
       <message name="IDS_CLEAR_SEARCH_HISTORY_LINK" desc="Text informing the user that they can clear search history and other data using MyActivity.">
         To clear <ph name="BEGIN_LINK1">&lt;link1&gt;</ph>search<ph name="END_LINK1">&lt;/link1&gt;</ph> or other forms of history, visit <ph name="BEGIN_LINK2">&lt;link2&gt;</ph>My Brave Activity<ph name="END_LINK2">&lt;/link2&gt;</ph>
       </message>
+      <message name="IDS_CLEAR_SEARCH_HISTORY_NON_GOOGLE_DSE" desc="Text informing the user about the way to clear their search history when their Default Search Engine is not Brave.">
+        Your search engine is <ph name="dse">%1$s<ex>Bing</ex></ph>. If applicable, see their instructions to delete your search history.
+      </message>
       <message name="IDS_CLEAR_PASSWORDS_TITLE" desc="Title for Clear Passwords in Clear Browsing Data preference">
         Saved passwords
       </message>
@@ -1409,7 +1412,7 @@ Your Brave account may have other forms of browsing history like searches and ac
 
       <!-- Download later -->
       <message name="IDS_DOWNLOAD_LATER_DIALOG_TITLE" desc="Title of the download later dialog that let the user to choose the time to download.">
-        Choose when to download
+        Download later instead?
       </message>
       <message name="IDS_DOWNLOAD_LATER_DIALOG_SUBTITLE" desc="Subtitle of the download later dialog that let the user to choose the time to download.">
         You'll see a notification when this file is ready
@@ -1431,6 +1434,24 @@ Your Brave account may have other forms of browsing history like searches and ac
       </message>
       <message name="IDS_DOWNLOAD_LATER_PROMPT_ENABLED_TITLE" desc="A setting text to ask whether to show a dialog about when to download.">
         Ask when to save files
+      </message>
+      <message name="IDS_DOWNLOAD_LATER_SLOW_NETWORK_SUBTITLE" desc="A subtitle in the download later dialog to inform the user about slow network connection.">
+        Your <ph name="CONNECTION_TYPE">%1$s<ex>2G</ex></ph> connection might slow down your download
+      </message>
+      <message name="IDS_DOWNLOAD_LATER_2G_CONNECTION" desc="2G connection type.">
+        2G
+      </message>
+      <message name="IDS_DOWNLOAD_LATER_BLUETOOTH_CONNECTION" desc="Bluetooth connection type.">
+        Bluetooth
+      </message>
+      <message name="IDS_DOWNLOAD_LATER_WIFI_CONNECTION" desc="WIFI connection type.">
+        Wi-Fi
+      </message>
+      <message name="IDS_DOWNLOAD_LATER_LARGE_FILE_SUBTITLE" desc="A subtitle in the download later dialog to inform the user about large download file size.">
+        This file is large (<ph name="FILE_SIZE">%1$s<ex>300MB</ex></ph>)
+      </message>
+      <message name="IDS_DOWNLOAD_LATER_DIALOG_POSITIVE_BUTTON_TEXT" desc="The text of positive button on the download later dialog.">
+        Done
       </message>
 
       <!-- Downloads location -->
@@ -2013,13 +2034,13 @@ To change this setting, <ph name="BEGIN_LINK">&lt;resetlink&gt;</ph>reset sync<p
         <ph name="MESSAGE">%1$s<ex>Downloading file (200 MB)</ex></ph> <ph name="LINK_NAME">%2$s<ex>Details</ex></ph> button
       </message>
       <message name="IDS_DOWNLOAD_SCHEDULED_ON_WIFI" desc="Label describing that the download was scheduled to start on Wi-Fi.">
-        Download will start on Wi-Fi.
+        You’ll see a notification when this download starts on Wi-Fi.
       </message>
       <message name="IDS_DOWNLOAD_SCHEDULED_ON_DATE" desc="Label describing that the download was scheduled to start at a later date.">
-        Download will start on <ph name="date">%1$s<ex>Feb 28 2020</ex></ph>.
+        You’ll see a notification when this download starts on <ph name="date">%1$s<ex>Feb 28 2020</ex></ph>.
       </message>
       <message name="IDS_DOWNLOAD_SCHEDULED_ON_TIME" desc="Label describing that the download was scheduled to start at a later time.">
-        Download will start at <ph name="time">%1$s<ex>8:30PM</ex></ph>.
+        You’ll see a notification when this download starts at <ph name="time">%1$s<ex>8:30PM</ex></ph>.
       </message>
 
       <!-- Inline Update Infobar -->
@@ -2608,9 +2629,6 @@ To change this setting, <ph name="BEGIN_LINK">&lt;resetlink&gt;</ph>reset sync<p
       <message name="IDS_SIGNIN_INCOGNITO_BUTTON" desc="Button text to open the private interstitial in the web sign-in account picker bottom sheet">
         Open a Private tab
       </message>
-      <message name="IDS_SIGNIN_GMS_UPDATING" desc="Message notifying user that Google Play Services is still updating.">
-        Waiting for Google Play Services to finish updating
-      </message>
 
       <!-- Strings for Private Interstitial. -->
       <message name="IDS_INCOGNITO_INTERSTITIAL_TITLE" desc="The title of the private interstitial bottom sheet.">
@@ -2727,9 +2745,6 @@ Data from your Private session will only be cleared from Brave when you <ph name
       <message name="IDS_MOST_VISITED_ITEM_REMOVED" desc="Text shown when the user removes one of the most visited websites on the new tab page.">
         Item removed
       </message>
-      <message name="IDS_NTP_ACCESSIBILITY_ITEM_REMOVED" desc="Text announced for accessibility when the user removes an item from the new tab page e.g. by swiping it away or using the context menu.">
-        Item removed: <ph name="ITEM_TITLE">%1$s<ex>Prime minister announces new health care plans</ex></ph>
-      </message>
       <message name="IDS_ACCESSIBILITY_GOOGLE_DOODLE" desc="Content description for the Brave Doodle (the fun, alternative Brave logo) shown on the new tab page.">
         Brave doodle: <ph name="DOODLE_DESCRIPTION">%1$s<ex>Einstein’s birthday</ex></ph>
       </message>
@@ -2807,6 +2822,9 @@ Data from your Private session will only be cleared from Brave when you <ph name
       </message>
       <message name="IDS_FEED_MANAGE_FOLLOWING_DESCRIPTION" desc="Content description to manage followed sites.">
         Manage the sites that you're following
+      </message>
+      <message name="IDS_FOLLOW_MANAGE_FOLLOWING" desc="Header for Following Management activity.">
+        FOLLOWING
       </message>
       <message name="IDS_NTP_TURN_OFF_FEED" desc="Content description to turn off the feed from the feed header overflow menu.">
         Turn off
@@ -3393,10 +3411,10 @@ Data from your Private session will only be cleared from Brave when you <ph name
         Refine: <ph name="REFINE_TEXT">%1$s<ex>The meaning of life</ex></ph>
       </message>
       <message name="IDS_ACCESSIBILITY_OMNIBOX_CONCEAL_CLIPBOARD_CONTENTS" desc="Content description for the omnibox clipboard conceal button.">
-        Conceal Clipboard Contents
+        Hide clipboard contents
       </message>
       <message name="IDS_ACCESSIBILITY_OMNIBOX_REVEAL_CLIPBOARD_CONTENTS" desc="Content description for the omnibox clipboard reveal button.">
-        Reveal Clipboard Contents
+        Show clipboard contents
       </message>
       <message name="IDS_ACCESSIBILITY_OMNIBOX_SWITCH_TO_TAB" desc="Content description for the omnibox switch to tab button.">
         Switch To Tab
@@ -4581,6 +4599,9 @@ Data from your Private session will only be cleared from Brave when you <ph name
       <!-- Continuous Search Navigation strings -->
       <message name="IDS_CSN_AD_LABEL" desc="Label for identifying an ad in search results." translateable="false">
       Ad
+      </message>
+      <message name="IDS_CSN_PROVIDER_LABEL" desc="Label that shows the source of a list of clickalbe URLs. This should have a new line character in the middle." translateable="false">
+      Results from\n<ph name="PROVIDER">%1$s</ph>
       </message>
     </messages>
   </release>
