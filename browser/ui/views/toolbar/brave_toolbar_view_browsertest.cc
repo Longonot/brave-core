@@ -6,15 +6,15 @@
 #include "base/run_loop.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/chrome_notification_types.h"
+#include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/profiles/profile_attributes_storage.h"
 #include "chrome/browser/profiles/profile_manager.h"
 #include "chrome/browser/profiles/profile_window.h"
-#include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/search_engines/template_url_service_factory.h"
-#include "chrome/browser/ui/browser_finder.h"
-#include "chrome/browser/ui/browser_list_observer.h"
-#include "chrome/browser/ui/browser_list.h"
 #include "chrome/browser/ui/browser.h"
+#include "chrome/browser/ui/browser_finder.h"
+#include "chrome/browser/ui/browser_list.h"
+#include "chrome/browser/ui/browser_list_observer.h"
 #include "chrome/browser/ui/views/frame/browser_view.h"
 #include "chrome/browser/ui/views/frame/toolbar_button_provider.h"
 #include "chrome/browser/ui/views/toolbar/toolbar_view.h"
@@ -68,13 +68,10 @@ class BraveToolbarViewTest : public InProcessBrowserTest {
   BraveToolbarViewTest() = default;
   ~BraveToolbarViewTest() override = default;
 
-  void SetUpOnMainThread() override {
-    Init(browser());
-  }
+  void SetUpOnMainThread() override { Init(browser()); }
 
   void Init(Browser* browser) {
-    BrowserView* browser_view =
-      BrowserView::GetBrowserViewForBrowser(browser);
+    BrowserView* browser_view = BrowserView::GetBrowserViewForBrowser(browser);
     ASSERT_NE(browser_view, nullptr);
     ASSERT_NE(browser_view->toolbar(), nullptr);
     toolbar_button_provider_ = browser_view->toolbar_button_provider();
@@ -94,7 +91,7 @@ class BraveToolbarViewTest : public InProcessBrowserTest {
 };
 
 IN_PROC_BROWSER_TEST_F(BraveToolbarViewTest,
-    AvatarButtonNotShownSingleProfile) {
+                       AvatarButtonNotShownSingleProfile) {
   EXPECT_EQ(false, is_avatar_button_shown());
 }
 
@@ -119,7 +116,7 @@ IN_PROC_BROWSER_TEST_F(BraveToolbarViewTest, AvatarButtonIsShownGuestProfile) {
 }
 
 IN_PROC_BROWSER_TEST_F(BraveToolbarViewTest,
-    AvatarButtonIsShownMultipleProfiles) {
+                       AvatarButtonIsShownMultipleProfiles) {
   // Should not be shown in first profile, at first
   EXPECT_EQ(false, is_avatar_button_shown());
 
@@ -142,11 +139,9 @@ IN_PROC_BROWSER_TEST_F(BraveToolbarViewTest,
   // Open the new profile
   EXPECT_EQ(1U, BrowserList::GetInstance()->size());
   BrowserAddedObserver browser_creation_observer;
-  profiles::OpenBrowserWindowForProfile(
-    ProfileManager::CreateCallback(),
-    false, true, true,
-    new_profile,
-    Profile::CREATE_STATUS_INITIALIZED);
+  profiles::OpenBrowserWindowForProfile(ProfileManager::CreateCallback(), false,
+                                        true, true, new_profile,
+                                        Profile::CREATE_STATUS_INITIALIZED);
   base::RunLoop().RunUntilIdle();
   browser_creation_observer.Wait();
   EXPECT_EQ(2U, BrowserList::GetInstance()->size());
