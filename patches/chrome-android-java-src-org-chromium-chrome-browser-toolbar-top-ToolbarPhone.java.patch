@@ -1,8 +1,8 @@
 diff --git a/chrome/android/java/src/org/chromium/chrome/browser/toolbar/top/ToolbarPhone.java b/chrome/android/java/src/org/chromium/chrome/browser/toolbar/top/ToolbarPhone.java
-index bb40eff33f6f90bd83f54db3dfd6b1b6344bdd61..97d93804408b9837c9493da3fdadfabc631d5a80 100644
+index d19721ca96bf85bb88bb4e88674954331a8e2c7f..21b337d0e3c9dec9a67f580ba2ccfca9dc72003d 100644
 --- a/chrome/android/java/src/org/chromium/chrome/browser/toolbar/top/ToolbarPhone.java
 +++ b/chrome/android/java/src/org/chromium/chrome/browser/toolbar/top/ToolbarPhone.java
-@@ -406,6 +406,7 @@ public class ToolbarPhone extends ToolbarLayout implements OnClickListener, TabC
+@@ -405,6 +405,7 @@ public class ToolbarPhone extends ToolbarLayout implements OnClickListener, TabC
          if (mCurrentLocationBarColor == color) return;
          mCurrentLocationBarColor = color;
          mLocationBarBackground.setColorFilter(color, PorterDuff.Mode.SRC_IN);
@@ -10,7 +10,7 @@ index bb40eff33f6f90bd83f54db3dfd6b1b6344bdd61..97d93804408b9837c9493da3fdadfabc
      }
  
      /**
-@@ -525,6 +526,7 @@ public class ToolbarPhone extends ToolbarLayout implements OnClickListener, TabC
+@@ -524,6 +525,7 @@ public class ToolbarPhone extends ToolbarLayout implements OnClickListener, TabC
                          EventConstants.PARTNER_HOME_PAGE_BUTTON_PRESSED);
              }
          }
@@ -18,7 +18,7 @@ index bb40eff33f6f90bd83f54db3dfd6b1b6344bdd61..97d93804408b9837c9493da3fdadfabc
      }
  
      @Override
-@@ -694,6 +696,7 @@ public class ToolbarPhone extends ToolbarLayout implements OnClickListener, TabC
+@@ -693,6 +695,7 @@ public class ToolbarPhone extends ToolbarLayout implements OnClickListener, TabC
       * @return The right bounds of the location bar after accounting for any visible left buttons.
       */
      private int getBoundsAfterAccountingForRightButtons() {
@@ -26,7 +26,7 @@ index bb40eff33f6f90bd83f54db3dfd6b1b6344bdd61..97d93804408b9837c9493da3fdadfabc
          return Math.max(mToolbarSidePadding, mToolbarButtonsContainer.getMeasuredWidth());
      }
  
-@@ -2111,6 +2114,7 @@ public class ToolbarPhone extends ToolbarLayout implements OnClickListener, TabC
+@@ -2110,6 +2113,7 @@ public class ToolbarPhone extends ToolbarLayout implements OnClickListener, TabC
          } else {
              populateUrlClearExpansionAnimatorSet(animators);
          }

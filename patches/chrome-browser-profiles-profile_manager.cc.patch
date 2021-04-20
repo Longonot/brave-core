@@ -1,8 +1,8 @@
 diff --git a/chrome/browser/profiles/profile_manager.cc b/chrome/browser/profiles/profile_manager.cc
-index 9898054f49a93e159bc5952716240d3790847089..a5d79aa18e43d29c88935da6c15182d369ec2a30 100644
+index 6364c764583cde218519915ec003fcf982ca361d..9154a87f5424ecffa74cfa159b51e94285b19ce7 100644
 --- a/chrome/browser/profiles/profile_manager.cc
 +++ b/chrome/browser/profiles/profile_manager.cc
-@@ -420,6 +420,8 @@ std::string GetLastUsedProfileBaseName() {
+@@ -418,6 +418,8 @@ std::string GetLastUsedProfileBaseName() {
    DCHECK(local_state);
    std::string last_used_profile_base_name =
        local_state->GetString(prefs::kProfileLastUsed);

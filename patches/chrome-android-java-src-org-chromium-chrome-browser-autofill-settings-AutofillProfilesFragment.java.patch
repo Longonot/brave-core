@@ -1,8 +1,8 @@
 diff --git a/chrome/android/java/src/org/chromium/chrome/browser/autofill/settings/AutofillProfilesFragment.java b/chrome/android/java/src/org/chromium/chrome/browser/autofill/settings/AutofillProfilesFragment.java
-index a2a42b2c05295ae390c27920873a1c32990bd570..c43fb10fb51dbb4eb5bbe8f8aa94add8b2970310 100644
+index 24b65152fd7a16a83e56918143e63a98d4702d70..fc981b3c6bbdfb68772027ce65081b207813d53f 100644
 --- a/chrome/android/java/src/org/chromium/chrome/browser/autofill/settings/AutofillProfilesFragment.java
 +++ b/chrome/android/java/src/org/chromium/chrome/browser/autofill/settings/AutofillProfilesFragment.java
-@@ -35,7 +35,7 @@ import org.chromium.components.browser_ui.settings.ChromeSwitchPreference;
+@@ -34,7 +34,7 @@ import org.chromium.components.browser_ui.settings.ChromeSwitchPreference;
  /**
   * Autofill profiles fragment, which allows the user to edit autofill profiles.
   */

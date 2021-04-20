@@ -1,8 +1,8 @@
 diff --git a/chrome/browser/ui/webui/settings/site_settings_helper.cc b/chrome/browser/ui/webui/settings/site_settings_helper.cc
-index bfa13b94f7d2130530a1976d3a24eb642479e9be..b07980925c51241eff739153ce85dfdf54edaff1 100644
+index 19fd3f5eb9ef8f8553dff489a4a183c87e6d6d93..c460ea2ef2f3670922256cb64450d08f42e08be7 100644
 --- a/chrome/browser/ui/webui/settings/site_settings_helper.cc
 +++ b/chrome/browser/ui/webui/settings/site_settings_helper.cc
-@@ -149,6 +149,7 @@ const ContentSettingsTypeNameEntry kContentSettingsTypeGroupNames[] = {
+@@ -151,6 +151,7 @@ const ContentSettingsTypeNameEntry kContentSettingsTypeGroupNames[] = {
      {ContentSettingsType::PERMISSION_AUTOREVOCATION_DATA, nullptr},
      {ContentSettingsType::FILE_SYSTEM_LAST_PICKED_DIRECTORY, nullptr},
      {ContentSettingsType::DISPLAY_CAPTURE, nullptr},
@@ -10,7 +10,7 @@ index bfa13b94f7d2130530a1976d3a24eb642479e9be..b07980925c51241eff739153ce85dfdf
  };
  
  static_assert(base::size(kContentSettingsTypeGroupNames) ==
-@@ -376,6 +377,7 @@ bool HasRegisteredGroupName(ContentSettingsType type) {
+@@ -378,6 +379,7 @@ bool HasRegisteredGroupName(ContentSettingsType type) {
  }
  
  ContentSettingsType ContentSettingsTypeFromGroupName(base::StringPiece name) {
