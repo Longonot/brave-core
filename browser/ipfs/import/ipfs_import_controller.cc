@@ -52,8 +52,7 @@ std::string GetDirectoryNameForWebPageImport(const GURL& url) {
 // The index.html page is the most common name used for default pages
 // if no other page is specified. We use it to open imported pages
 // by shareable link automatically in browsers.
-const base::FilePath::StringType kDefaultHtmlPageName =
-    FILE_PATH_LITERAL("index.html");
+const char kDefaultHtmlPageName[] = "index.html";
 
 // Message center notifier id for user notifications
 const char kNotifierId[] = "service.ipfs";
@@ -173,7 +172,8 @@ void IpfsImportController::ImportCurrentPageToIpfs() {
 
 void IpfsImportController::SaveWebPage(const base::FilePath& directory) {
   DCHECK_CURRENTLY_ON(content::BrowserThread::UI);
-  base::FilePath saved_main_file_path = directory.Append(kDefaultHtmlPageName);
+  base::FilePath saved_main_file_path =
+      directory.AppendASCII(kDefaultHtmlPageName);
   net::GenerateSafeFileName(web_contents_->GetContentsMimeType(), false,
                             &saved_main_file_path);
   base::FilePath saved_main_directory_path = saved_main_file_path.DirName();

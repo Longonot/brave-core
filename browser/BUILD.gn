@@ -300,40 +300,6 @@ source_set("browser_process") {
     deps += [ "//brave/browser/decentralized_dns" ]
   }
 
-  if (ipfs_enabled) {
-    sources += [
-      "ipfs/content_browser_client_helper.cc",
-      "ipfs/content_browser_client_helper.h",
-      "ipfs/import/ipfs_import_controller.cc",
-      "ipfs/import/ipfs_import_controller.h",
-      "ipfs/import/save_package_observer.cc",
-      "ipfs/import/save_package_observer.h",
-      "ipfs/ipfs_host_resolver.cc",
-      "ipfs/ipfs_host_resolver.h",
-      "ipfs/ipfs_service_factory.cc",
-      "ipfs/ipfs_service_factory.h",
-      "ipfs/ipfs_tab_helper.cc",
-      "ipfs/ipfs_tab_helper.h",
-    ]
-
-    deps += [
-      "//brave/components/ipfs",
-      "//brave/components/services/ipfs/public/mojom",
-      "//components/user_prefs",
-    ]
-
-    if (enable_extensions) {
-      deps += [
-        "//extensions/browser",
-        "//extensions/common",
-      ]
-    }
-
-    if (!is_android) {
-      deps += [ "//brave/browser/infobars" ]
-    }
-  }
-
   if (brave_together_enabled) {
     deps += [ "//brave/components/brave_together/browser" ]
   }
