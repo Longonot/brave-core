@@ -134,7 +134,6 @@ brave_chrome_browser_deps = [
   "//brave/components/tor/buildflags",
   "//brave/services/network/public/cpp",
   "//chrome/browser:browser_process",
-  "//chrome/browser/extensions",
   "//chrome/browser/profiles:profile",
   "//chrome/browser/ui",
   "//chrome/common",
@@ -164,7 +163,6 @@ brave_chrome_browser_deps = [
   "//components/version_info",
   "//content/public/browser",
   "//content/public/common",
-  "//extensions/browser",
   "//extensions/buildflags",
   "//mojo/public/cpp/bindings",
   "//net",
@@ -245,6 +243,8 @@ if (enable_tor) {
 if (enable_extensions) {
   brave_chrome_browser_deps += [
     "//brave/browser/extensions",
+    "//chrome/browser/extensions",
+    "//extensions/browser",
     "//extensions/common:common_constants",
   ]
 
