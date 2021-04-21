@@ -16,29 +16,27 @@ export interface Props {
   name: string
   symbol: string
   icon: string
-  assetBalance: string
+  assetBalance: number
   fiatBalance: string
 }
 
-export default class PortfolioAssetItem extends React.PureComponent<Props> {
-
-  navTo = () => () => {
-    this.props.action()
+const PortfolioAssetItem = (props: Props) => {
+  const { name, assetBalance, fiatBalance, icon, symbol, action } = props
+  const navTo = () => {
+    action()
   }
-
-  render () {
-    const { name, assetBalance, fiatBalance, icon, symbol } = this.props
-    return (
-      <StyledWrapper onClick={this.navTo()}>
-        <NameAndIcon>
-          <AssetIcon icon={icon} />
-          <AssetName>{name}</AssetName>
-        </NameAndIcon>
-        <BalanceColumn>
-          <FiatBalanceText>${fiatBalance}</FiatBalanceText>
-          <AssetBalanceText>{assetBalance} {symbol}</AssetBalanceText>
-        </BalanceColumn>
-      </StyledWrapper>
-    )
-  }
+  return (
+    <StyledWrapper onClick={navTo}>
+      <NameAndIcon>
+        <AssetIcon icon={icon} />
+        <AssetName>{name}</AssetName>
+      </NameAndIcon>
+      <BalanceColumn>
+        <FiatBalanceText>${fiatBalance}</FiatBalanceText>
+        <AssetBalanceText>{assetBalance.toFixed(4)} {symbol}</AssetBalanceText>
+      </BalanceColumn>
+    </StyledWrapper>
+  )
 }
+
+export default PortfolioAssetItem
