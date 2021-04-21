@@ -5,6 +5,7 @@
 
 import("//brave/components/brave_rewards/browser/buildflags/buildflags.gni")
 import("//brave/components/greaselion/browser/buildflags/buildflags.gni")
+import("//brave/components/ipfs/buildflags/buildflags.gni")
 import("//extensions/buildflags/buildflags.gni")
 
 brave_browser_brave_rewards_sources = []
@@ -19,10 +20,12 @@ if (brave_rewards_enabled) {
   ]
 
   brave_browser_brave_rewards_deps += [
+    "//base",
     "//brave/browser/profiles",
     "//brave/browser/profiles:util",
     "//brave/components/brave_rewards/browser",
     "//brave/components/brave_rewards/common",
+    "//brave/components/ipfs/buildflags",
     "//brave/vendor/bat-native-ledger:headers",
     "//chrome/browser:browser_process",
     "//chrome/browser/profiles:profile",
@@ -51,6 +54,10 @@ if (brave_rewards_enabled) {
       "//brave/common/extensions/api",
       "//extensions/browser",
     ]
+  }
+
+  if (ipfs_enabled) {
+    brave_browser_brave_rewards_deps += [ "//brave/components/ipfs" ]
   }
 
   if (is_android) {
